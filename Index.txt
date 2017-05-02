@@ -1,0 +1,13 @@
+# create date: May 2, 2017
+# content: the index of the thesis
+
+
+Section 1 Introduction 6
+Section 2 Parallel XML Processing 10
+Section 3 Fragmentation of XML Processing 10
+Section 4 Partial Tree 20
+Section 5 Array-Based Repepresentation of Implementation on Partial Tree 15
+Section 6 Parallel XML Processing on BaesX 15
+Section 7 Related Work 5
+Section 8 Conclusion 3
+Section 9 Future Work 3
