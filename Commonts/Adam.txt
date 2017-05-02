@@ -1,0 +1,13 @@
+Well, the structure of your thesis will be different than mine, but I think
+# first of all, provide high *quality images and graphs*
+# Second, try to write it asif the reader has no idea about your field So it
+  requires quite decent introduction
+# And also, the formulation of problems and goals are very important
+
+# it's ok to copy paste your own papers word by word journals allow this.
+  Of course you have to pay attention to details, like in this paper, instead
+  of thesis and so on but generally it's ok
+
+# Some passages in this work have been quoted verbatim from the previous
+publications and work of the author (listed according to the state in time of
+writing the thesis):
