@@ -1,1 +1,40 @@
 # This schedule starts from May 1st to Jun 30th.
+
+TASKS
++ Task 1: Prepaeration (3 days)
+  - Make a plan/this schedule
+  - Create a GitHub repository for storing materials.
+  - Understand PhD thesis
+  - Prepare LaTex templeate for the thesis.
+
++ Task 2: Merge three papers (2 days)
+
++ Task 3: Smoothly integrite three papers. (6 days)
+
++ Task 4: Collect and check related work. (2 days)
+  - Collect related papers
+  - Make references into LaTex format
+
++ Task 5: Write the introduction part (5 days)
+
++ Task 6: Add 2 - 3 introductions sections about bases of my study (4 days).
+
++ Task 7: Add conclusion section. (3 days)
+
++ Task 8: Format references (1 day)
+
++ Taks 9: Full check and finish the first draft. (4 days)
+
+
+Time table
+Task1 3 days
+Task2 2 days
+Task3 6 days
+Task4 2 days
+Task5 5 days
+Task6 4 days
+Task7 3 days
+Task8 1 days
+Task9 4 days
+-----------
+total 30 days
