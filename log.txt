@@ -1,5 +1,8 @@
 # log of my PhD Thesis
 
+05-04
+* Prepare ignored list and Tex template. (Committed)
+* Familarize the template and integrite the first paper.
 
 05-03
 * Collect and checked some published thesises from KUT website.
