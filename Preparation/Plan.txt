@@ -1,0 +1,38 @@
+* PhD Thesis Writing
+-----------------------------
+The main tasks are listed as follows:
+
++ Task 1: Integrite all my previous work as the main body of the thesis.
+           The main previous work inclues Partial Tree (with the Prefix-Based
+           Indexing as an extension), BFS-Array Implementation and DPS on BaseX.
+
++ Task 2: Extent the current work (ADBIS submission) with more expriments.
+          This part will be done in parallel throughout the whole thesis
+          writing, because it will be a process of improvements. As for the
+          content, I plan focus on the following aspects:
+          - Investigate Hybrid Partitioning
+          - Use more data sets, such as DBLP, Treebank and UniProt:SwissProt
+            with more queries.
+
++ Task 3: Collect related work according to the main body and write the
+           Introduction chapters that server the main body. This would be the
+           most difficult part.
+
++ Task 4: Fill the rest parts of the thesis.
+           Including abstract, acknowledgements, conclusion, etc.
+
++ Task 5: Revise and complete the thesis.
+
++ Other:  Handle some unkown issues. For example, filling out some documents.
+
+
+* Time arrangement
+--------------------------------
+main timeline     sub timeline
+Task 1: 1 Week.   Task 2:   7 Weeks.
+Task 3: 2 Weeks
+Task 4: 2 Weeks
+Task 5: 2 Weeks
+Ohters: 1 Week
+--------------------------
+total: 8 Weeks

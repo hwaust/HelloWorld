@@ -7,10 +7,7 @@ TASKS
   - Understand PhD thesis
   - Prepare LaTex templeate for the thesis.
 
-+ Task 2: Merge four papers (2 days)
-  - Establish LaTex template
-  - Make LaTex environment work on my desktop
-  - Roughly merge all papers.
++ Task 2: Merge three papers (2 days)
 
 + Task 3: Smoothly integrite three papers. (6 days)
 
