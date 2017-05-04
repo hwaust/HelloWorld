@@ -1,0 +1,140 @@
+% this file is called up by thesis.tex
+% content in this file will be fed into the main document
+
+%: ----------------------- name of chapter  -------------------------
+\chapter{Partial Tree} % top level followed by section, subsection
+
+
+%: ----------------------- paths to graphics ------------------------
+
+% change according to folder and file names
+\ifpdf
+    \graphicspath{{X/figures/PNG/}{X/figures/PDF/}{X/figures/}}
+\else
+    \graphicspath{{X/figures/EPS/}{X/figures/}}
+\fi
+
+%: ----------------------- contents from here ------------------------
+
+
+
+
+
+
+
+% ---------------------------------------------------------------------------
+%: ----------------------- end of thesis sub-document ------------------------
+% ---------------------------------------------------------------------------
+
+\documentclass[PRO,english]{ipsj}
+\usepackage{PROpresentation}
+\PROheadtitle{2015-2-(10): Manuscript for presentation at IPSJ-SIGPRO, Aug 6, 2015.}
+
+% %\documentclass[JIP,draft]{ipsj}
+% \documentclass[JIP]{ipsj}
+
+\usepackage[]{graphicx}
+\usepackage{latexsym}
+
+\usepackage{color}
+\def\modify#1#2#3{%
+  {\underline{\sf{#1}}:} {\color{blue}{#2}} {\color{green}{\mbox{$\Rightarrow$}}} {\color{red}{#3}}}
+
+\setlength{\doublerulesep}{.4pt}
+% This is the macro for writing partial tree like pt1.
+\def\PT#1{\hbox{\textrm{pt}$_{#1}$}}
+% I prepared macros for representing nodes like \Nc{A}{0}, \Nl{A}{0}, \Nr{A}{0}, \Np{A}{0}.
+\def\Nc#1#2{\hbox{\texttt{#1$_{#2}$}}}
+\def\Nl#1#2{\hbox{+\texttt{#1$_{#2}$}}}
+\def\Nr#1#2{\hbox{\texttt{#1$_{#2}$}+}}
+\def\Np#1#2{\hbox{+\texttt{#1$_{#2}$}+}}
+% This is the macro for writing predicate link.
+\def\pred#1#2{#1\to\{#2\}}
+%\def\INDEXSET#1{\mathit{#1}_{[0,P)}}
+\def\INDEXSET#1{\mathit{#1}_{[P]}}
+\def\INDEXSETL#1{\mathit{#1}_{[p]}}
+
+\usepackage[varg]{txfonts}%%!!
+\makeatletter%
+\input{ot1txtt.fd}
+\makeatother%
+
+\newtheorem{property}{Property}
+
+\begin{document}
+
+\title{A Partial-Tree-Based Approach\\ for XPath Query on Large XML Trees}
+
+\affiliate{KUT}{School of Information, Kochi University of Technology,
+Kami, Kochi 782--8502, Japan}
+\affiliate{AUST}{Department of Computer Science and Engineering, Anhui University of Science and Technology,
+Huainan, Anhui, China}
+
+\author{Wei Hao}{KUT,AUST}[188004h@gs.kochi-tech.ac.jp]
+\author{Kiminori Matsuzaki}{KUT}[matsuzaki.kiminori@kochi-tech.ac.jp]
+
+\begin{abstract}
+XML is a popular data definition language and 
+is widely used for representation of arbitrary data structures. 
+For queries on XML documents, XPath has commonly been 
+ used in many applications. The complexity of 
+applying queries increases as the number of nodes in an 
+XML document increases. Querying very large XML 
+documents becomes really difficult when there is not enough  
+computer memory to store and manipulate 
+the whole tree data. The objective of this study is to 
+develop an algorithm for querying very large XML trees in a
+distributed-memory environment. We split a large 
+XML document into small chunks and parse the chunks to 
+create special trees called partial trees. Then the query is 
+executed in parallel on the partial trees. The results from 
+the partial trees are concatenated to form the final query 
+results for output. The algorithms were tested on a 16-node 
+PC cluster, and the experiment results showed a speedup 
+of a factor of 6 on 16 nodes. 
+\end{abstract}
+
+\begin{keyword}
+XML, XPath, XML Query, Parallel Programming, Partial Tree
+\end{keyword}
+
+\maketitle
+
+\input{introduction}
+
+\input{xpath}
+
+\input{partialtree}
+
+\input{construction}
+
+\input{query}
+
+\input{evaluation}
+
+\input{relatedwork}
+
+\input{conclusion}
+
+\input{bib}
+
+\begin{biography}
+
+\profile{Wei Hao}{is a Ph.D. student in Kochi University of Technology in Japan and is a Lecture in Anhui University of Science and Technology in China. 
+	He received his B.E. and M.S. from Anhui University of Science and Technology in 2004 and 2007, respectively, and began doctoral study since 2014. 
+	His current research interest is in parallel programming and XML data processing. }
+%
+\profile{Kiminori Matsuzaki}{is an Associate Professor of Kochi
+  University of Technology in Japan.  He received his B.E., M.S. and
+  Ph.D. from The University of Tokyo in 2001, 2003 and 2007,
+  respectively.  He was an Assistant Professor (2005--2009) in The
+  University of Tokyo, before joining Kochi University of Technology
+  as an Associate Professor in 2009.  His research interest is in
+  parallel programming and algorithm derivation. He is a member of
+  ACM, JSSST, IEEE\@.}
+%
+\end{biography}
+
+\end{document}
+
+

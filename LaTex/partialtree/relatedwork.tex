@@ -1,0 +1,28 @@
+\section{Related Work}
+
+Many papers have addressed the topic of implementations of XPath queries 
+in parallel. One significant paper was presented by IBM~\cite{BLKK09}. The paper 
+proposes three kinds of strategies for XPath queries in 
+parallel: data partition strategy, query partition strategy, 
+and hybrid partition strategy. Many papers can be categorized to one of the strategies. \cite{KrYa10,ZhPC10,HSYW14} focus on XPath queries 
+implemented in a shared-memory environment. \cite{PLZC07,WZYL08}
+focused on XML parsing, which is related to our parsing 
+algorithm. \cite{AnAH10} proposed ideas about XML processing 
+techniques that are helpful for our research. 
+Some prior researches are based on a common assumption 
+that a large amount of XPath queries are executed over an XML stream.
+YFilter\cite{DiFF11} and XMLTK \cite{AvGT02} execute thousands of small queries in parallel. The parsing phase is still sequential.
+Indexing is also a hot topic for improving the performance of parallel XML queries processing.
+\cite{CVZT02}, \cite{Grus02}, \cite{JLCW02} are related to this field. 
+They examined the indices on different types of trees, including B+-tree, R-tree, and XR-tree. 
+
+The idea of dividing the XML documents and running the computation for trees
+with the chunks is not new.   Kakehi et al.~\cite{KaME07} showed a parallel tree reduction algorithm
+from the nodes in chunks.  Based on the idea given by Kakehi et al., Emoto and Imachi~\cite{EmIm12} developed 
+a parallel tree reduction algorithm on Hadoop, and Matsuzaki and Miyazaki~\cite{MaMi15} developed 
+a parallel tree accumulation algorithm. A similar approach was taken by Sevilgen et al.~\cite{SeAF05} who developed a simpler version of tree accumulations over the serialized representation of trees.
+
+It is known that we can develop a parallel algorithm for XPath queries using the tree accumulations~\cite{Mats07}.
+The approach we took in this paper is inspired by the work by Morihata~\cite{Mori13}.
+To discuss the advantages of the proposed algorithm and compare by implementation with other approaches
+are our important future work.

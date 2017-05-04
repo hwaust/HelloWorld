@@ -1,0 +1,228 @@
+%\def\INDEXSET#1{\mathit{#1}_{[0,P)}}
+\def\INDEXSET#1{\mathit{#1}_{[P]}}
+\def\baselinestretch{1.5}
+
+\section{Partial Tree Construction}
+\label{sec:construction}
+
+Since the structure of a partial tree is different from ordinary XML trees, 
+we designed an algorithm for partial tree construction.
+The algorithm for constructing partial trees has three steps: constructing subtrees from parsing chunks, pre-path computation, and computation for ranges. 
+
+\subsection{Construction of subtrees from parsing XML chunks}
+
+A partial tree is constructed from parsing an input XML chunk, which is  
+a substring created from splitting an XML document. We design an algorithm that parses 
+the input XML string into a similar tree by using an iterative function with 
+a stack. We use an example XML document listed below to demonstrate how our algorithm works.
+
+\begin{quote}\tt\small
+<A><B><C><E></E></C><D></D></B><E></E><B><B><D><E>\\
+</E></D><C></C></B><C><E></E></C><D><E></E></D></B>\\
+<E><D></D></E><B><D></D><C></C></B><B></B></A>\\
+\end{quote}
+ 
+From the document, we can create an XML tree as shown in Fig.~\ref{fig:tree}.
+We number these nodes in a prefix order for identification.
+
+\begin{figure*}[t]
+	\centering\includegraphics[]{partialtree/figures/fromWord-5.pdf}
+	\caption{an XML tree from the given XML string}
+	\label{fig:tree}
+\end{figure*}
+
+Then, we split the document into five chunks as listed below.
+
+\begin{itemize}
+	\item[chunk$_0$:] \texttt{\small <A><B><C><E></E></C><D></D></B>}
+	\item[chunk$_1$:] \texttt{\small <E></E><B><B><D><E></E></D>}
+	\item[chunk$_2$:] \texttt{\small <C></C></B><C><E></E></C><D>}
+	\item[chunk$_3$:] \texttt{\small <E></E></D></B><E><D></D></E>}
+	\item[chunk$_4$:] \texttt{\small <B><D></D><C></C></B><B></B></A>}
+\end{itemize}
+
+When splitting an XML document, we need to deal with nodes with missing tags.
+During parsing, we push the start tag onto the stack. When we meet an
+end tag, we pop the last tag to merge a closed node. However, as a result of splitting, 
+some nodes miss their matching tags. In this case, we  
+mark it left-open or right-open based on which part is missing. Then, we add them onto 
+the subtrees in the same way as we add closed nodes.
+
+We also need to handle the case when the split position falls inside a tag 
+and thus splits the tag into two halves.
+In this case, we simply merge the split tags. 
+Because there are at most two split tags on a partial tree, 
+the time taken for merging them is negligible. 
+
+One or more subtrees can be constructed from one chunk.
+We construct nine subtrees by parsing the five chunks above as shown in  Fig.~\ref{fig:partialtree-notfinished}.
+Chunk$_0$ and chunk$_4$ have only one subtree while chunk$_2$ has three subtrees.
+After the parsing phase, these subtrees are used for pre-path computation.
+
+\begin{figure*}[t]
+	\centering\includegraphics[]{partialtree/figures/fromWord-6.pdf}
+	\caption{Subtrees from parsing chunks}
+	\label{fig:partialtree-notfinished}
+\end{figure*}
+
+
+
+\subsection{Pre-path computation}
+
+The basic idea of computing the pre-paths for each partial tree is to 
+make use of open nodes, because missing parent and ancestor nodes 
+is caused by splitting these nodes. Therefore, the information needed 
+for creating the pre-paths lies in these open nodes. 
+
+Algorithm 0 outlined the pseudo codes for pre-path computation. 
+Because one chunk may generate more than one subtrees, the input is a list of subtree lists. 
+The length of the list is equal to the number of partial trees, thus represent the length as $P$.
+
+Algorithm 0 has three phases.
+The first phase selects all left-open nodes to $LLS$ and all right-open nodes to $RLS$ (line 2-4). 
+$LLS_{[P]}$ collect the left open nodes of the $p$th partial tree, likewise we have $RLS_{[P]}$.
+Note that the nodes in $LLS_{[P]}$ or $RLS_{[P]}$ are arranged in order from root to leaves.
+For example, in Table~\ref{table:opennodes}, we select all the open nodes and add them 
+to corresponding lists. 
+ 
+ \begin{figure}[t]
+ 	\centering
+ 	\label{fig:ppalgorithm}
+ 	\begin{tabular}{l}
+ 		\hline
+ 		\hline
+ 		\makebox[.95\linewidth][l]{\textbf{Algorithm 0} \textsc{GetPrepath}($\mathit{STS}$)} \\
+ 		\hline
+ 		\textbf{Input}: $\mathit{STS}$: a list of subtree lists \\
+ 		\textbf{Output}: an indexed set of partial trees\\
+ 		\makebox[1em][r]{1:}\hspace{1 mm} /* open nodes in LLS or RLS are arranged in top-bottom order */\\
+ 		\makebox[1em][r]{2:}\hspace{1 mm} \textbf{for all} $p \in [0, P)$ \textbf{do} \\
+ 		\makebox[1em][r]{3:}\hspace{4 mm} $\INDEXSETL{LLS} \leftarrow \mathit{SelectLeftOpenNodes}(\INDEXSETL{STS})$\\
+ 		\makebox[1em][r]{4:}\hspace{4 mm} $\INDEXSETL{RLS} \leftarrow \mathit{SelectRightOpenNodes}(\INDEXSETL{STS})$\\
+ 		
+ 		\makebox[1em][r]{5:}\hspace{1 mm} /* Prepath-computation and collecting matching nodes */\\
+ 		\makebox[1em][r]{6:}\hspace{1 mm} $AuxList \leftarrow []$ \\
+ 		\makebox[1em][r]{7:}\hspace{1 mm} \textbf{for} $ p \in [0, P-1) $ \textbf{do}\\
+ 		\makebox[1em][r]{8:}\hspace{4 mm} $AuxList.\mathit{AppendToHead}(\INDEXSETL{RLS})$\\
+ 		\makebox[1em][r]{9:}\hspace{4 mm} $AuxList.\mathit{RemoveLast}(LLS_{[p+1]}.\mathit{Size}()) $\\
+ 		\makebox[1em][r]{10:}\hspace{4 mm} $ PPS_{[p+1]}\leftarrow AuxList$ \\
+ 		
+ 		\makebox[1em][r]{11:}\hspace{1 mm}  /* Add pre-nodes to subtrees */ \\
+ 		\makebox[1em][r]{12:}\hspace{1 mm} $PTS \leftarrow []$ \\
+ 		\makebox[1em][r]{13:}\hspace{1 mm} \textbf{for} $ p \in [0, P) $ \textbf{do}\\
+ 		\makebox[1em][r]{14:}\hspace{4 mm} \textbf{for} $ i \in [0, PPS_{[p]}.Size() - 1)$ \textbf{do} \\
+ 		\makebox[1em][r]{15:}\hspace{8 mm}   $PPS_{[p][i]}.children.$Add$(PPS_{[p][i+1]})$ \\
+  		\makebox[1em][r]{16:}\hspace{4 mm} $PPS_{[p]}.last.children.$Add$(\INDEXSETL{STS})$ \\
+ 		\makebox[1em][r]{17:}\hspace{4 mm}   $\INDEXSETL{PTS} \leftarrow PPS_{[p][0]}$ \\
+ 		\makebox[1em][r]{18:}\hspace{1 mm} \textbf{return} \emph{PTS} \\
+ 		\hline
+ 	\end{tabular}
+ \end{figure}
+
+In the second phase, we do the pre-path computation. Once we split an XML document from a position
+inside the document, the two partial tree created from splitting have the same number of open nodes 
+on the splitting side. Given two consecutive partial trees, the number of right-open nodes of the left partial tree is the same as the number of left-open nodes of the right partial tree. 
+We can use this feature to compute pre-paths for partial trees.
+We first add the $p$th $RLS$ to the head of an auxiliary list $AuxList$ (line 8), 
+then remove the same number of nodes as the number of $(p-1)$th $LLS$ (line 9). 
+Last, we keep the nodes in the $AuxList$ to the $(p+1)$th $PPS$, which holds the pre-nodes for each partial tree.
+Table~\ref{table:tempresult} shows the results of pre-path computation for the given example.
+
+\begin{table}[t]
+	\caption{Open node lists}
+	\label{table:opennodes}
+	\centering
+	\begin{tabular}{c|cc}
+		\hline
+		& Left-open nodes	& Right-open nodes \\
+		\hline
+		pt$_0$	& []			& [A$_0$] \\
+		pt$_1$	& []			& [B$_6$, B$_7$] \\
+		pt$_2$	& [B$_7$]			& [D$_1$$_3$] \\
+		pt$_3$	& [B$_6$, D$_1$$_3$]		& [] \\
+		pt$_4$	& [A$_0$]			& [] \\
+		\hline
+	\end{tabular}
+\end{table}
+ 
+\begin{table}[t]
+	\caption{Results of pre-path computation in AUX}
+	\label{table:tempresult}
+	\centering
+	\begin{tabular}{c|ccc}
+		\hline
+		& Left-open nodes	& Right-open nodes & $AUX$\\
+		\hline
+		pt$_0$	& []			& [A$_0$]  & []\\  
+		pt$_1$	& []			& [B$_6$, B$_7$] & [A$_0$] \\
+		pt$_2$	& [B$_7$]			& [D13] &[A$_0$,B$_6$]\\
+		pt$_3$	& [B$_7$, D$_1$$_3$]		& []  & [A$_0$]\\
+		pt$_4$	& [A$_0$]			& [] &[]\\
+		\hline
+	\end{tabular}
+\end{table}
+
+
+In last phase, we add pre-nodes to the corresponding partial tree and copy the nodes in $PPS_{[p]}$ to $PTS_{[p]}$ as results for output.Because pre-nodes in the pre-path are also open nodes, we list all open nodes for each partial trees in Table~\ref{table:allopennodes}. Then, the pre-path computation is complete. For the given example, we obtain the partial trees as shown in Fig.~\ref{fig:partialtree2}.
+
+\begin{table}[t]
+	\caption{All open nodes}
+	\label{table:allopennodes}
+	\centering
+	\begin{tabular}{c|cc}
+	\hline
+	& Left-open nodes	& Right-open nodes \\
+	\hline
+	pt$_0$	& []						& [A$_0$] \\
+	pt$_1$	& [A$_0$]					& [A$_0$, B$_6$, B$_7$] \\
+	pt$_2$	& [A$_0$, B$_6$, B$_7$]		& [A$_0$, B$_6$, D$_1$$_3$] \\
+	pt$_3$	& [A$_0$, B$_6$, D$_1$$_3$]	& [A$_0$] \\
+	pt$_4$	& [A$_0$]					& [] \\
+	\hline
+	\end{tabular}
+\end{table} 
+
+
+\begin{figure*}[t]
+	\centering\includegraphics[]{partialtree/figures/fromWord-7.pdf}
+	\caption{Partial trees from the given XML string.}
+	\label{fig:partialtree2}
+\end{figure*}
+
+\subsection{Creation of Ranges of Open Nodes}  
+Once an XML node is split, it generates two or more open nodes
+on consecutive partial trees. For example, as we can see in Fig.~\ref{fig:partialtree2}, 
+\Nr{B}{6} on pt$_1$, \Np{B}{6} on pt$_2$, and \Nl{B}{6}  on pt$_3$ 
+are created from the same node \Nc{B}{6}.
+For locating the open nodes of the same node on different partial trees, 
+we use two integers \textit{start} and \textit{end} for the open nodes. With these two integers, 
+we can decide the partial trees that have matching nodes of the same open node.
+Note that after adding nodes to a partial tree, the nodes from the same node also have the 
+same depth. Therefore, we can locate all the matching nodes to set \textit{start} and \textit{end} for each open node. 
+After computation, we obtain the ranges shown in Table~\ref{table:rangesresult}. 
+
+\begin{table}[t]
+	\caption{Open node lists with ranges}
+	\label{table:rangesresult}
+	\centering
+	\begin{tabular}{c|cc}
+		\hline
+		& Left open nodes	& Right open nodes \\
+		\hline
+		pt$_0$	& []	& [A$_0$(0,4)] \\
+		pt$_1$	& [A$_0$(0,4)]	& [A$_0$(0,4), B$_6$(1,3), B$_7$(1,2)] \\
+		pt$_2$	& [A$_0$(0,4), B$_6$(1,3), B$_7$(1,2)]	& [A$_0$(0,4), B$_6$(1,3), D$_1$$_3$(2,3)] \\
+		pt$_3$	& [A$_0$(0,4), B$_6$(1,3), D$_1$$_3$(2,3)]	& [A$_0$(0,4)] \\
+		pt$_4$	& [A$_0$(0,4)]	& [] \\
+		\hline
+	\end{tabular}
+\end{table}
+
+By using these ranges, we can locate the matching nodes of the same node on the different partial trees.
+For example, the range of A$_0$ is (0, 4), that means we can 
+locate the same nodes of \Nc{A}{0} from pt$_0$ to pt$_4$.
+As we can see, there are \Nr{A}{0}, \Np{A}{0}, \Np{A}{0}, 
+\Np{A}{0}, and \Nr{A}{0} on pt$_0$ to pt$_4$, respectively.
+
+
+% LocalWords: fromWord pdf subtree subtrees pre

@@ -1,0 +1,38 @@
+\def\PT#1{\hbox{\textrm{pt}$_{#1}$}}
+% I prepared macros for representing nodes like \Nc{A}{0}, \Nl{A}{0}, \Nr{A}{0}, \Np{A}{0}.
+\def\Nc#1#2{\hbox{\texttt{#1$_{#2}$}}}
+\def\Nl#1#2{\hbox{+\texttt{#1$_{#2}$}}}
+\def\Nr#1#2{\hbox{\texttt{#1$_{#2}$}+}}
+\def\Np#1#2{\hbox{+\texttt{#1$_{#2}$}+}}
+% This is the macro for writing predicate link.
+\def\pred#1#2{#1\to\{#2\}}
+%\def\INDEXSET#1{\mathit{#1}_{[0,P)}}
+\def\INDEXSET#1{\mathit{#1}_{[P]}}
+\def\INDEXSETL#1{\mathit{#1}_{[p]}}
+
+ 
+
+\newtheorem{property}{Property}
+
+
+\chapter{A Partial-Tree-Based Approach for XPath Query on Large XML Trees}
+ 
+ 
+\input{partialtree/introduction}
+
+\input{partialtree/xpath}
+
+\input{partialtree/partialtree}
+
+\input{partialtree/construction}
+
+\input{partialtree/query}
+
+\input{partialtree/evaluation}
+
+\input{partialtree/relatedwork}
+
+\input{partialtree/conclusion}
+
+%\input{partialtree/bib}
+
