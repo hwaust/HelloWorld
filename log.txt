@@ -1,13 +1,17 @@
 # log of my PhD Thesis
 
 
-
+05-03
+* Collect and checked some published thesises from KUT website.
+* Form a basic idea
+* Write a plan to sensei.
+O Task 1 is done.
 
 05-02
-08:30 - 12:00 study how to write a thesis.
-14:00 - 18:30 create GitHub, install TexStudio,
+* Study how to write a thesis.
+* Create GitHub, install TexStudio,
 
 
 05-01
-08:00 - 12:00 Study the history of ADBIS paper.
-14:30 - 23:00 stuy the ADBIS paper.
+* Study the history of ADBIS paper.
+* Study the ADBIS paper.
