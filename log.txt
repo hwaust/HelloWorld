@@ -1,5 +1,9 @@
 # log of my PhD Thesis
 
+05-05
+* Study the template about format, structure and reference.
+* Adjust 1st paper.
+
 05-04
 * Prepare ignored list and Tex template. (Committed)
 * Familarize the template and integrite the first paper.
