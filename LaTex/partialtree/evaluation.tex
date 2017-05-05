@@ -39,17 +39,20 @@ To show the effectiveness of our parallel XPath query algorithm, we
 perform two types of tests. In the first test, we applied queries to an XML file of 669 MB
 to show the scalability of the algorithm with respect to the number of PCs.
 In the second test, we fixed the number of PCs to 16 and increased the size of the XML documents.
- 
+
 \begin{table*}[t]
 	\caption{Queries used for the experiments}
 	\label{table:queries}
-	\centering\begin{tabular}{l|l}
+	\centering
+	\begin{tabular}{c|l}
 		\hline
 		Q4 & \texttt{/child::site/descendant::keyword/parent::text}\\
-		Q5 & \texttt{/child::site/child::people/child::person[child::profile/child::gender]/child::name} \\
-		Q6 & \texttt{/child::site/child::open\_auctions/child::open\_auction/child::bidder[following-sibling::bidder]} \\
-		Q7 & \texttt{/child::site/child::closed\_auctions/child::closed\_auction/child::annotation/child::description/}\\
-		& \hfill\texttt{child::text/child::keyword} \\
+		Q5 & \texttt{/child::site/child::people/child::person[child::profile/} \\
+		& \texttt{child::gender]/child::name}\\
+		Q6 & \texttt{/child::site/child::open\_auctions/child::open\_auction/} \\
+		& \texttt{child::bidder[following-sibling::bidder]}\\
+		Q7 & \texttt{/child::site/child::closed\_auctions/child::closed\_auction/}\\
+		   & \hfill\texttt{child::annotation/child::description/child::text/child::keyword}\\
 		\hline
 	\end{tabular}
 \end{table*}

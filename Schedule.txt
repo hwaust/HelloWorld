@@ -8,6 +8,8 @@ TASKS
   - Prepare LaTex templeate for the thesis.
 
 + Task 2: Merge three papers (2 days)
+  05-04 Merge the first paper.
+	05-05 Merge the last two papers.
 
 + Task 3: Smoothly integrite three papers. (6 days)
 

@@ -34,11 +34,11 @@ We number these nodes in a prefix order for identification.
 Then, we split the document into five chunks as listed below.
 
 \begin{itemize}
-	\item[chunk$_0$:] \texttt{\small <A><B><C><E></E></C><D></D></B>}
-	\item[chunk$_1$:] \texttt{\small <E></E><B><B><D><E></E></D>}
-	\item[chunk$_2$:] \texttt{\small <C></C></B><C><E></E></C><D>}
-	\item[chunk$_3$:] \texttt{\small <E></E></D></B><E><D></D></E>}
-	\item[chunk$_4$:] \texttt{\small <B><D></D><C></C></B><B></B></A>}
+	\item[chunk$_0$:] \texttt{ <A><B><C><E></E></C><D></D></B>}
+	\item[chunk$_1$:] \texttt{ <E></E><B><B><D><E></E></D>}
+	\item[chunk$_2$:] \texttt{ <C></C></B><C><E></E></C><D>}
+	\item[chunk$_3$:] \texttt{ <E></E></D></B><E><D></D></E>}
+	\item[chunk$_4$:] \texttt{ <B><D></D><C></C></B><B></B></A>}
 \end{itemize}
 
 When splitting an XML document, we need to deal with nodes with missing tags.
@@ -184,7 +184,7 @@ In last phase, we add pre-nodes to the corresponding partial tree and copy the n
 
 
 \begin{figure*}[t]
-	\centering\includegraphics[]{partialtree/figures/fromWord-7.pdf}
+	\centering\includegraphics[scale=.9]{partialtree/figures/fromWord-7.pdf}
 	\caption{Partial trees from the given XML string.}
 	\label{fig:partialtree2}
 \end{figure*}
