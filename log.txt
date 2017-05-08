@@ -1,5 +1,13 @@
 # log of my PhD Thesis
 
+05-07
+* Adjust the Table of Contents
+* Dicuss the use of GitHub.
+
+05-06
+* Merged the second paper.
+* Adjust template.
+
 05-05
 * Study the template about format, structure and reference.
 * Adjust 1st paper.
