@@ -1,0 +1,48 @@
+# The information of this Thesis
+* Table of Contents
++ 1 Introduction
+  - Research Background
+  - Problems and aims
+  - Outline of this study
++ 2 XML and XPath Language
+  - XML
+  - XPath Language
++ 3 Related Work
+  # I will copy the whole paper.
+  - Parallel XML parsing
+  - XML processing in shared-memory environments
+  - XML processing in distributed-memory environments
+  - XML databases
++ 3 A New Data Structure for Partial XML Processing
+  # I will copy the whole paper except for the representation of open nodes.
+  - Introduction
+  - XPath Query
+  - Partial Tree
+  - Partial Tree Construction
+  - XPath Queries on Partial Trees
+  - Experiments
+  # Related Work will be merged into Chapter 2.
+  - Conclusion
++ 4 An Efficient BFS-Array Based Implementation of Partial Tree
+  - Introduction 
+  - Data Representation
+  - Query Algorithms
+  - Evaluation
+  # Related Work will be merged into Chapter 2.
+  - Conclusion
++ 5 Parallelization of XPath Queries using Modern XQuery 3.1 Processors:
+    Observations and Perspectives
+  # I will extend the experiment part.
+  - Introduction
+  # Related work will be merged into Chapter 2.
+  - The XML database Engine BaseX
+  - Implementing Data Partitioning with BaseX
+  - Experiments
+  # more experiments with more data sets and queries will be added.
+  - Observations and Perspectives
++ 6 Conclusion
+  - Summary of this work
+  - Future work
++ Reference
++ Appendix
+  # uncertain yet
