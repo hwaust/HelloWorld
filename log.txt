@@ -1,4 +1,6 @@
 # log of my PhD Thesis
+05-08
+* Keep improving title and ToC.
 
 05-07
 * Adjust the Table of Contents
