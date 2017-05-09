@@ -1,51 +1,47 @@
 # The information of this Thesis
 
 * Title
-Efficient Parallel Processing of XPath queries through a Novel Tree Structure
-and Modern XQuery 3.1 Processors.
+
+I have to proposals:
+Title 1:
+A Study on Efficient Parallel Processing of XPath queries through
+a novel tree strcutre with its efficient implementation or Modern
+XQuery processors
+
+Title 2:
+A Study on Efficient Parallel Processing of XPath queries over
+Large XML documents.
 
 * Table of Contents (pages)
 + 1 Introduction (2-3)
   - Research Background
   - Problems and aims
   - Outline of this study
-+ 2 XPath Language  (2-3)
-  - Introduction
-  - Grammar
-+ 3 Related Work  (5-8)
-  # I will copy the whole paper.
++ 2 XML Query Languages: XPath and XQuery  (2-3)
+  - XPath Language
+  - XQuery Language
++ 3 Related Work  (8-10)
   - Parallel XML parsing
-  - XML processing in shared-memory environments
-  - XML processing in distributed-memory environments
+  - Divide-and-Conquer Evaluation
+  - Cheap partitioning
   - XML databases
-+ 3 A New Data Structure for Partial XML Processing (20-25)
-  # I will copy the whole paper except for the representation of open nodes.
-  - Introduction
++ 4 A New Data Structure for Partial XML Processing (30-35)
   - Partial Tree
-  - Partial Tree Construction
-  - XPath Queries on Partial Trees
-  - Experiments
-  # Related Work will be merged into Chapter 2.
-  - Conclusion
-+ 4 An Efficient BFS-Array Based Implementation of Partial Tree (15-20)
-  - Introduction
-  - Data Representation
+  - Construction of Partial Tree
   - Query Algorithms
-  - Evaluation
-  # Related Work will be merged into Chapter 2.
-  - Conclusion
-+ 5 Parallelization of XPath Queries using Modern XQuery 3.1 Processors:
-    Chanllenges and Experience (20-25)
-  # I will extend the experiment part.
-  - Introduction
-  # Related work will be merged into Chapter 2.
+  - BFS-Array Based Implementation of Partial Tree
+  - Data Representation
++ 5 A revive of three partitioning strategies on top of XQuery
+    processors (20-25)
   - The XML database Engine BaseX
   - Implementing Data Partitioning with BaseX
   - Implementing Query Partitioning with BaseX
   - Implementing Hybrid Partitioning with BaseX
-  - Experiments
-  - Conclusions
-+ 6 Conclusion (2-3)
++ 6 Experiments (15-20)
+  - Evaluation of Original Implementation of partial tree
+  - Evalustion of BFS-array Implementaion of partial tree
+  - Evaluation of BaseX based Implemention of Partitioning Strategies.
++ 7 Conclusion (3-5)
   - Summary of this work
   - Future work
 

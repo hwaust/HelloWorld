@@ -1,4 +1,9 @@
 # log of my PhD Thesis
+
+05-09
+* Keep refining and improving Title and ToC
+* Added abstract.
+
 05-08
 * Keep improving title and ToC.
 
