@@ -1,5 +1,6 @@
 # log of my PhD Thesis
 
+<<<<<<< HEAD
 05-09
 * Keep refining and improving Title and ToC
 * Added abstract.
@@ -15,6 +16,8 @@
 * Merged the second paper.
 * Adjust template.
 
+=======
+>>>>>>> parent of cff8ddb... upto 0507
 05-05
 * Study the template about format, structure and reference.
 * Adjust 1st paper.
