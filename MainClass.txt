@@ -11,6 +11,5 @@ public class mainclass{
   }
 
   public void test1(){
-  
   }
 }
