@@ -20,5 +20,3 @@ New Change.
 A new new change.
 
 Add 1
-
-Add 2
