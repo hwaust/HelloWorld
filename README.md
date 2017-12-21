@@ -16,4 +16,3 @@ Compose a `Phd thesis` for graduation.
 
 This is for master branch.
 
-I make this new line.
