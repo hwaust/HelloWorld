@@ -9,4 +9,8 @@ public class mainclass{
   public void test(){
 
   }
+
+  public void test1(){
+  
+  }
 }
