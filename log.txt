@@ -1,7 +1,6 @@
 # log of my PhD Thesis
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 05-09
 * Keep refining and improving Title and ToC
 * Added abstract.
@@ -26,8 +25,6 @@
 05-04
 * Prepare ignored list and Tex template. (Committed)
 * Familarize the template and integrite the first paper.
-=======
->>>>>>> parent of f17ab6e... log 0504
 
 05-03
 * Collect and checked some published thesises from KUT website.
