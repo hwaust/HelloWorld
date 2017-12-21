@@ -5,8 +5,4 @@ public class mainclass{
       System.out.println("hello, world!");
   }
 
-  // this function is used for test.
-  public void test(){
-
-  }
 }
