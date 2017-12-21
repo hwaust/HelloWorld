@@ -14,6 +14,6 @@ June 30th, 2017
 ---------------
 Compose a `Phd thesis` for graduation.
 
-This is for test branch.
+This is for master branch.
 
 new content.
