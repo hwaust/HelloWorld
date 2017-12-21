@@ -17,6 +17,9 @@ Compose a `Phd thesis` for graduation.
 This is for master branch.
 
 New Change.
+<<<<<<< HEAD
 A new new change.
 
 Add 1
+=======
+>>>>>>> parent of d03d2a7... Revert "newchange"
